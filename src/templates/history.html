@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>History</title>
+</head>
+<body>
+  <h1>Processed PDFs</h1>
+  <p><a href="/">Back</a></p>
+  <ul>
+    {% for item in entries %}
+      <li>
+        {{ item.time }} - <a href="/output/{{ item.pdf }}">{{ item.pdf }}</a>
+        (<a href="/output/{{ item.image }}">image</a>,
+         <a href="/output/{{ item.text }}">text</a>)
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
