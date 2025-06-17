@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PDF Renamer</title>
+</head>
+<body>
+  <h1>PDF Renamer with OCR</h1>
+  <form action="/process" method="post" enctype="multipart/form-data">
+    <label>Upload PDF:</label>
+    <input type="file" name="file" accept="application/pdf"><br>
+    <label>Or folder path on server:</label>
+    <input type="text" name="folder" placeholder="/path/to/folder"><br>
+    <button type="submit">Process</button>
+  </form>
+  <p><a href="/history">History</a></p>
+
+  {% if results %}
+    <h2>Results</h2>
+    {% for r in results %}
+      <div style="margin-bottom:20px;">
+        <p><strong>Proposed name:</strong> {{ r.pdf }}</p>
+        <img src="/output/{{ r.image }}" width="300"><br>
+        <pre>{{ r.text }}</pre>
+        <a href="/output/{{ r.pdf }}">Download PDF</a>
+      </div>
+    {% endfor %}
+  {% endif %}
+</body>
+</html>
